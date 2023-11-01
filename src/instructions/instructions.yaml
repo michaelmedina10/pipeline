@@ -1,0 +1,39 @@
+people_description:
+  get_data:
+      path: "data_source/pessoas.json"
+  pipeline:
+    - function: multiplier
+      params:
+          new_column_name: gramas
+          column_target: peso
+          multiplier: 1000
+    - function: rename_columns
+      params:
+          old_column: altura
+          new_column: altura(cm)
+    - function: rename_columns
+      params:
+          old_column: peso
+          new_column: peso(kg)
+    - function: add_column
+      params:
+          column_name: "teste"
+          value: 10
+
+people_description2:
+  get_data:
+      path: "data_source/pessoas.json"
+  pipeline:
+    - function: multiplier
+      params:
+          new_column_name: gramas
+          column_target: peso
+          multiplier: 1000
+    - function: rename_columns
+      params:
+          old_column: altura
+          new_column: altura(cm)
+    - function: rename_columns
+      params:
+          old_column: peso
+          new_column: peso(kg)
