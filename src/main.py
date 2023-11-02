@@ -1,12 +1,13 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from utils.environments import render_templates
-from routers import services
+from routers import services, logs
 from __init__ import __title__, __version__
 
 
 app = FastAPI(title=__title__, version=__version__)
 app.include_router(services.router)
+app.include_router(logs.router)
 
 
 @app.get('/', response_class=HTMLResponse)
