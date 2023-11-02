@@ -1,6 +1,7 @@
 import json
 import yaml
 import utils.pandas_functions
+from utils.logger import logger
 
 class Instructions:
 
@@ -14,6 +15,7 @@ class Instructions:
         self._bind_functions()
 
     def _load_instructions(self) -> None:
+        logger.debug(f'Carregando arquivo - path: {self._path}')
         self._instructions = read_yaml(self._path)
 
     def get_instructions(self) -> dict:

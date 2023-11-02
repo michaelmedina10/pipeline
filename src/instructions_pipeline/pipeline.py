@@ -1,11 +1,13 @@
 import pandas as pd
 
 from instructions.read_instructions import read_json, Instructions
+from utils.logger import logger
 from utils.handle_file import save_pickle
 
 
 def pipeline() -> dict:
 
+    logger.info("Iniciando Pipeline")
     instructions = pipeline_input()
     data_output = pipeline_output(instructions=instructions)
     save_pickle(data_output)
@@ -28,6 +30,7 @@ def pipeline_output(instructions: dict) -> dict:
         df_base = instructions[key].pop('get_data')
         for pipeline in value.values():
             dict_output[key] = transform_pipeline(df_base, pipeline)
+    logger.info("Fim pipeline!!")
     return dict_output
 
 
